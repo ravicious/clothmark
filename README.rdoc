@@ -1,16 +1,49 @@
-= clothmark
+= ClothMark
 
-Description goes here.
+With ClothMark you can easily convert your files formatted with Markdown, Textile or BBCode to HTML files.
+
+ClothMark uses three awesome gems:
+* RedCloth[http://redcloth.org/]
+* BlueCloth[http://www.deveiate.org/projects/BlueCloth]
+* bb-ruby[http://github.com/cpjolicoeur/bb-ruby/]
+
+== Instalation
+
+  gem sources -a http://gems.github.com
+  sudo gem install ravicious-clothmark
+
+== Usage
+
+There are three commands:
+
+* +bbmark+, which converts a file formatted with *BBCode* to HTML file.
+* +bluemark+, which converts a file formatted with *Markdown* to HTML file.
+* +redmark+, which converts a file formatted with *Textile* to HTML file.
+
+For example:
+
+  $ bluemark my_markdown_formatted_file.txt
+  
+It generates the my\_markdown\_formatted\_file\_clothmark.html file. All files will be created in the folder that contains the input file, e.g:
+
+  $ bbmark posts/forum_post2
+  
+In this case, the forum\_post2.html file will be created in the _posts_ folder.
+
+You can *specify* *an* *output* *file*, just add the second argument:
+
+  $ redmark textile_rlz new_blog_post.html
+  
+It generates the new\_blog\_post.html file.
 
 == Note on Patches/Pull Requests
  
 * Fork the project.
 * Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
+* Add tests for it (RSpec). This is important so I don't break it in a
   future version unintentionally.
 * Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but
-   bump version in a commit by itself I can ignore when I pull)
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
 
 == Copyright

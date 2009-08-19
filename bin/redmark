@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'clothmark'
+
+input = ARGV[0]
+output = ARGV[1] || nil
+
+@redmark = RedMark.new(input, output)
+@redmark.convert
+@redmark.save_to_file

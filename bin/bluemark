@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+
+require File.expand_path(File.dirname(__FILE__) + '/../lib/clothmark')
+
+input = ARGV[0]
+output = ARGV[1] || nil
+
+@bluemark = BlueMark.new(input, output)
+@bluemark.convert
+@bluemark.save_to_file
