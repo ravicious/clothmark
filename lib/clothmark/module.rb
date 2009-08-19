@@ -5,7 +5,7 @@ module ClothMark
   HEADER = <<-EOF
 <html>
   <head>
-    <style type="text/css">
+  <style type="text/css">
       #wrapper {
         width: 600px; margin: 0 auto;
         font-family: "Trebuchet MS", Verdana, sans-serif;
@@ -33,7 +33,7 @@ module ClothMark
   <body>
     <div id="wrapper">
   EOF
-  
+
   # Footer for an output file.
   FOOTER = <<-EOF
     </div>
@@ -42,7 +42,7 @@ module ClothMark
   EOF
   
   # ClothMark will generate a default filename if user don't want to save output to a specific file.
-  def initialize(file, output = nil)
+  def initialize(file, output = nil, additional_html = true)
     @file = file
     if (!output || output.empty?)
       @output = "#{file.gsub(/(\.[a-z]{3,4})/, '')}_clothmark.html"
@@ -50,15 +50,15 @@ module ClothMark
       @output = output
     end
     @data_for_output = []
+    @additional_html = additional_html # If true, then ClothMark will generate additional CSS and HTML
   end
   
   # Saves output to a file (one paragraph per line).
   def save_to_file
     File.open(@output, 'w+') do |file|
-      file.puts HEADER
+      file.puts HEADER if @additional_html
       file.puts @data_for_output.join("\n")
-      # @data_for_output.each {|line| file.puts "#{line} \n"}
-      file.puts FOOTER
+      file.puts FOOTER if @additional_html
     end
   end
 end

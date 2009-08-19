@@ -29,18 +29,19 @@ Quick example:
 It converts the input file (bb_code.txt) to the HTML file (forum_post.html) using BBCode preprocessor.
 
 Wanna see help? No problem.
-
   $ clothmark -h
   Usage: clothmark [options]
     -h, --help                       Display this screen
     -i, --input FILE                 Specify input file (if it aren't specified, then first argument will be used)
     -o, --output FILE                Specify output file
+    -ah, --additional-html           Specify, do additional HTML and CSS will be used (default - false)
     -m, --markup LANG                Specify markup language (markdown, textile or bbcode, default is markdown)
 
-So, there are three arguments:
+So, there are four arguments:
 * -i or --input which specifies input file. If it isn't typed, then first argument will be used as an input file. This argument is required.
 * -o or --output which specifies output file. You don't have to specify it, because ClothMark generates filename for output file automatically.
 * -m or --markup which specifies markup language. If you don't specify it, then Markdown will be used as a choosed language.
+* -ah or --additional-html which specifies, do additional HTML and CSS will be used. Default is set to false, but you can set it to true, just type this argument.
 
 All files will be created in the folder that contains a input file, e.g:
 

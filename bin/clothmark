@@ -18,10 +18,16 @@ optparse = OptionParser.new do |opts|
     options[:input] = arg
   end
 
-  # If output aren't specified, then it will be an empty string
+  # If output isn't specified, then it will be an empty string
   options[:output] = ""
   opts.on('-o', '--output FILE', 'Specify output file') do |arg|
     options[:output] = arg || nil
+  end
+
+  # If this option isn't specified, then it will be false
+  options[:additional_html] = false
+  opts.on('-ah', '--additional-html', 'Specify, do additional HTML and CSS will be used (default - false)') do
+    options[:additional_html] = true
   end
 
   options[:markup] = "markdown"
@@ -36,22 +42,22 @@ begin
 rescue OptionParser::MissingArgument => e
     puts e
     puts "To see help, type:"
-    puts "$ ruby #{__FILE__} -h"
+    puts "$ #{File.basename(__FILE__)} -h"
     exit
 rescue OptionParser::InvalidArgument => e
     puts e
     puts "To see accepted arguments, type:"
-    puts "$ ruby #{__FILE__} -h"
+    puts "$ #{File.basename(__FILE__)} -h"
     exit
 end #begin
 
 case options[:markup]
 when 'markdown'
-  @cloth = BlueMark.new(options[:input], options[:output])
+  @cloth = BlueMark.new(options[:input], options[:output], options[:additional_html])
 when 'textile'
-  @cloth = RedMark.new(options[:input], options[:output])
+  @cloth = RedMark.new(options[:input], options[:output], options[:additional_html])
 when 'bbcode'
-  @cloth = BBMark.new(options[:input], options[:output])
+  @cloth = BBMark.new(options[:input], options[:output], options[:additional_html])
 end
 
 @cloth.convert
