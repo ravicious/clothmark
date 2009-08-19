@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+
+require "optparse"
+require File.expand_path(File.dirname(__FILE__) + '/../lib/clothmark')
+
+options = {}
+
+optparse = OptionParser.new do |opts|
+
+  opts.on('-h', '--help', 'Display this screen') do
+    puts opts
+    exit
+  end
+  
+  # If input aren't specified, then first arg will be used
+  options[:input] = ARGV.first
+  opts.on('-i', '--input FILE', 'Specify input file (if it aren\'t specified, then first argument will be used)') do |arg|
+    options[:input] = arg
+  end
+
+  # If output aren't specified, then it will be an empty string
+  options[:output] = ""
+  opts.on('-o', '--output FILE', 'Specify output file') do |arg|
+    options[:output] = arg || nil
+  end
+
+  options[:markup] = "markdown"
+  opts.on('-m', '--markup LANG', %w(markdown textile bbcode) ,'Specify markup language (markdown, textile or bbcode, default is markdown)') do |arg|
+    options[:markup] = arg.downcase || "markdown"
+  end
+
+end
+
+begin
+  optparse.parse!
+rescue OptionParser::MissingArgument => e
+    puts e
+    puts "To see help, type:"
+    puts "$ ruby #{__FILE__} -h"
+    exit
+rescue OptionParser::InvalidArgument => e
+    puts e
+    puts "To see accepted arguments, type:"
+    puts "$ ruby #{__FILE__} -h"
+    exit
+end #begin
+
+case options[:markup]
+when 'markdown'
+  @cloth = BlueMark.new(options[:input], options[:output])
+when 'textile'
+  @cloth = RedMark.new(options[:input], options[:output])
+when 'bbcode'
+  @cloth = BBMark.new(options[:input], options[:output])
+end
+
+@cloth.convert
+@cloth.save_to_file
+
+puts "File converted and saved to #{File.expand_path(@cloth.output)}"

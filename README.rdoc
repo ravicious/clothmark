@@ -14,27 +14,39 @@ ClothMark uses three awesome gems:
 
 == Usage
 
-There are three commands:
+Basic usage:
 
-* +bbmark+, which converts a file formatted with *BBCode* to HTML file.
-* +bluemark+, which converts a file formatted with *Markdown* to HTML file.
-* +redmark+, which converts a file formatted with *Textile* to HTML file.
+  $ clothmark [input file]
 
-For example:
+It converts an input file to HTML using *Markdown* preprocessor. But you probably want to specify an output file or used preprocessor. Of course you can do this. Look here:
 
-  $ bluemark my_markdown_formatted_file.txt
+  $ clothmark [input file] [-o output file] [-m markup language]
+
+Quick example:
   
-It generates the my\_markdown\_formatted\_file\_clothmark.html file. All files will be created in the folder that contains the input file, e.g:
+  $ clothmark bb_code.txt -m bbcode -o forum_post.html
 
-  $ bbmark posts/forum_post2
+It converts the input file (bb_code.txt) to the HTML file (forum_post.html) using BBCode preprocessor.
+
+Wanna see help? No problem.
+
+  $ clothmark -h
+  Usage: clothmark [options]
+    -h, --help                       Display this screen
+    -i, --input FILE                 Specify input file (if it aren't specified, then first argument will be used)
+    -o, --output FILE                Specify output file
+    -m, --markup LANG                Specify markup language (markdown, textile or bbcode, default is markdown)
+
+So, there are three arguments:
+* -i or --input which specifies input file. If it isn't typed, then first argument will be used as an input file. This argument is required.
+* -o or --output which specifies output file. You don't have to specify it, because ClothMark generates filename for output file automatically.
+* -m or --markup which specifies markup language. If you don't specify it, then Markdown will be used as a choosed language.
+
+All files will be created in the folder that contains a input file, e.g:
+
+  $ clothmark posts/forum_post2 -m bbcode
   
 In this case, the forum\_post2.html file will be created in the _posts_ folder.
-
-You can *specify* *an* *output* *file*, just add the second argument:
-
-  $ redmark textile_rlz new_blog_post.html
-  
-It generates the new\_blog\_post.html file.
 
 == Note on Patches/Pull Requests
  

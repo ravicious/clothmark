@@ -2,12 +2,17 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ClothMark do
   before :each do
-    klass = Class.new { include ClothMark }
-    @foo = klass.new('nothing_special.txt')
+    @klass = Class.new { include ClothMark }
+    @foo = @klass.new('nothing_special.txt')
   end
   
   it "should generate valid default 'output' filename" do
     @foo.output.should == 'nothing_special_clothmark.html'
+  end
+
+  it "should gets output if it is specified" do
+    @bar = @klass.new('rails.txt', 'rubyonrails.txt')
+    @bar.output.should == 'rubyonrails.txt'
   end
   
   it "should save data for output to the output file" do

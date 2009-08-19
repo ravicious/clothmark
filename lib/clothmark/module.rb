@@ -44,7 +44,11 @@ module ClothMark
   # ClothMark will generate a default filename if user don't want to save output to a specific file.
   def initialize(file, output = nil)
     @file = file
-    @output = output || "#{file.gsub(/(\.[a-z]{3,4})/, '')}_clothmark.html"
+    if (!output || output.empty?)
+      @output = "#{file.gsub(/(\.[a-z]{3,4})/, '')}_clothmark.html"
+    else
+      @output = output
+    end
     @data_for_output = []
   end
   
