@@ -7,7 +7,7 @@ ClothMark uses three awesome gems:
 * BlueCloth[http://www.deveiate.org/projects/BlueCloth]
 * bb-ruby[http://github.com/cpjolicoeur/bb-ruby/]
 
-== Instalation
+== Installation
 
   gem sources -a http://gems.github.com
   sudo gem install ravicious-clothmark
