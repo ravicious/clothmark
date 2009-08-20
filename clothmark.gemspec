@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{clothmark}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rafal Cieslak"]
-  s.date = %q{2009-08-19}
+  s.date = %q{2009-08-20}
   s.default_executable = %q{clothmark}
   s.description = %q{With ClothMark you can easily convert your files formatted with Markdown, Textile or BBCode to HTML files.}
   s.email = %q{ravicious@gmail.com}
