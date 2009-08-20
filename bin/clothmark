@@ -6,7 +6,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../lib/clothmark')
 options = {}
 
 optparse = OptionParser.new do |opts|
-
+  @usage = opts
   opts.on('-h', '--help', 'Display this screen') do
     puts opts
     exit
@@ -37,19 +37,24 @@ optparse = OptionParser.new do |opts|
 
 end
 
-begin
-  optparse.parse!
-rescue OptionParser::MissingArgument => e
-    puts e
-    puts "To see help, type:"
-    puts "$ #{File.basename(__FILE__)} -h"
-    exit
-rescue OptionParser::InvalidArgument => e
-    puts e
-    puts "To see accepted arguments, type:"
-    puts "$ #{File.basename(__FILE__)} -h"
-    exit
-end #begin
+if ARGV.size < 1
+  puts @usage
+  exit
+else
+  begin
+    optparse.parse!
+  rescue OptionParser::MissingArgument => e
+      puts e
+      puts "To see help, type:"
+      puts "$ #{File.basename(__FILE__)} -h"
+      exit
+  rescue OptionParser::InvalidArgument => e
+      puts e
+      puts "To see accepted arguments, type:"
+      puts "$ #{File.basename(__FILE__)} -h"
+      exit
+  end #begin
+end
 
 case options[:markup]
 when 'markdown'
