@@ -56,16 +56,9 @@ else
   end #begin
 end
 
-case options[:markup]
-when 'markdown'
-  @cloth = BlueMark.new(options[:input], options[:output], options[:additional_html])
-when 'textile'
-  @cloth = RedMark.new(options[:input], options[:output], options[:additional_html])
-when 'bbcode'
-  @cloth = BBMark.new(options[:input], options[:output], options[:additional_html])
-end
-
-@cloth.convert
+@cloth = ClothMark.new(options[:input], options[:markup], options[:additional_html], options[:output])
+@cloth.read_from_file
+@cloth.to_html
 @cloth.save_to_file
 
 puts "File converted and saved to #{File.expand_path(@cloth.output)}"
