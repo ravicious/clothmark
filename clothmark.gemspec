@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{clothmark}
-  s.version = "0.2.2"
+  s.version = "0.2.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rafal Cieslak"]
-  s.date = %q{2009-08-20}
+  s.date = %q{2009-08-21}
   s.default_executable = %q{clothmark}
   s.description = %q{With ClothMark you can easily convert your files formatted with Markdown, Textile or BBCode to HTML files.}
   s.email = %q{ravicious@gmail.com}
@@ -26,12 +26,7 @@ Gem::Specification.new do |s|
      "bin/clothmark",
      "clothmark.gemspec",
      "lib/clothmark.rb",
-     "lib/clothmark/markups.rb",
-     "lib/clothmark/module.rb",
-     "spec/clothmark/bbmark_spec.rb",
-     "spec/clothmark/bluemark_spec.rb",
-     "spec/clothmark/clothmark_spec.rb",
-     "spec/clothmark/redmark_spec.rb",
+     "spec/clothmark_spec.rb",
      "spec/spec_helper.rb"
   ]
   s.has_rdoc = true
@@ -41,10 +36,7 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{With ClothMark you can easily convert your files formatted with Markdown, Textile or BBCode to HTML files.}
   s.test_files = [
-    "spec/clothmark/bbmark_spec.rb",
-     "spec/clothmark/bluemark_spec.rb",
-     "spec/clothmark/clothmark_spec.rb",
-     "spec/clothmark/redmark_spec.rb",
+    "spec/clothmark_spec.rb",
      "spec/spec_helper.rb"
   ]
 
