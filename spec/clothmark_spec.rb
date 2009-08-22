@@ -62,7 +62,7 @@ Lorem _ipsum_ dolor sit amet, *consectetur* adipiscing elit."
     @foo.output.should == 'nothing_special_clothmark.html'
   end
 
-  it "should gets output filename if it is specified" do
+  it "should get output filename if it is specified" do
     @bar = ClothMark.new('rails.txt', 'markdown', true, 'rubyonrails.txt')
     @bar.output.should == 'rubyonrails.txt'
   end
@@ -77,8 +77,8 @@ Lorem _ipsum_ dolor sit amet, *consectetur* adipiscing elit."
     counter = 0
     
     File.open(@foo.output, 'r') do |file|
-      # There's more than one paragraph in 'input file' (data_for_output),
-      # so we wan't a few paragraphs also in 'output' file.
+      # There's more than one paragraph in input file (data_for_output),
+      # so we wanna see a few paragraphs also in output file.
       file.each_line do |line|
         counter += 1 unless line.empty?
       end
@@ -94,7 +94,7 @@ Lorem _ipsum_ dolor sit amet, *consectetur* adipiscing elit."
     
     test_string = ''
     
-    # Puts each file from output to string for test
+    # Put each file from output to string for test
     File.open(@foo.output, 'r') do |file|
     file.each_line do |line|
         test_string << "#{line} \n"
@@ -116,7 +116,7 @@ Lorem _ipsum_ dolor sit amet, *consectetur* adipiscing elit."
     
     test_string = ''
     
-    # Puts each file from output to string for test
+    # Put each file from output to string for test
     File.open(@egg.output, 'r') do |file|
       file.each_line do |line|
         test_string << "#{line} \n"
@@ -141,14 +141,12 @@ Lorem _ipsum_ dolor sit amet, *consectetur* adipiscing elit."
   end
 
   it "should convert data from input file to HTML (Textile -> HTML)" do
-    @redmark.read_from_file
-    @redmark.to_html
     @redmark.data_for_output.should_not be_empty
     @redmark.data_for_output.join("\n").should match(/<.+>/)
   end
 
   after :all do
-    # Remove testfiles (outputs)
+    # Remove testfiles (outputs and inputs)
     [@bbcode_file, @markdown_file, @textile_file].each do |file|
       FileUtils.rm(file)
     end

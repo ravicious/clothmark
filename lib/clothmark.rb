@@ -28,7 +28,7 @@ class ClothMark
     @additional_html = additional_html # If true, then ClothMark will generate additional CSS and HTML
   end
   
-  # Reads data from input file and puts it to array
+  # Read lines from input file and put them to array
   def read_from_file
     begin
     File.open(@file) do |file|
@@ -40,6 +40,7 @@ class ClothMark
     end
   end
 
+  # Convert input to HTML with predefined markup language.
   def to_html
     case @markup
     when 'markdown'
@@ -51,7 +52,8 @@ class ClothMark
     end
   end
 
-  # Saves output to a file (one paragraph per line).
+  # Save output to the output file (one paragraph per line). 
+  # Include additional HTML and CSS if attr additional_html = true
   def save_to_file
     File.open(@output, 'w+') do |file|
       file.puts HEADER if @additional_html
