@@ -58,6 +58,10 @@ Lorem _ipsum_ dolor sit amet, *consectetur* adipiscing elit."
     lambda { ClothMark.new('rotfl', 'wikitext') }.should raise_error(ArgumentError)
   end
 
+  it "should raise an error if specified input file doesn't exist" do
+    lambda { ClothMark.new('dunnolol').read_from_file }.should_not raise_error(Errno::ENOENT)
+  end
+
   it "should generate valid default 'output' filename" do
     @foo.output.should == 'nothing_special_clothmark.html'
   end
