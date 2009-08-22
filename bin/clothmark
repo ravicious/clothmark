@@ -52,8 +52,10 @@ else
 end
 
 @cloth = ClothMark.new(options[:input], options[:markup], options[:additional_html], options[:output])
+puts "Reading..."
 @cloth.read_from_file
+puts "Converting..."
 @cloth.to_html
+puts "Saving..."
 @cloth.save_to_file
-
-puts "File converted and saved to #{File.expand_path(@cloth.output)}"
+puts "Done - #{File.expand_path(@cloth.output)}"
