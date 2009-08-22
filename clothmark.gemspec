@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{clothmark}
-  s.version = "0.2.3"
+  s.version = "0.2.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Rafal Cieslak"]
-  s.date = %q{2009-08-21}
+  s.date = %q{2009-08-22}
   s.default_executable = %q{clothmark}
   s.description = %q{With ClothMark you can easily convert your files formatted with Markdown, Textile or BBCode to HTML files.}
   s.email = %q{ravicious@gmail.com}
@@ -48,17 +48,14 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<bb-ruby>, [">= 0.9.3"])
       s.add_runtime_dependency(%q<BlueCloth>, [">= 1.0.0"])
       s.add_runtime_dependency(%q<RedCloth>, [">= 4.2.2"])
-      s.add_development_dependency(%q<rspec>, [">= 0"])
     else
       s.add_dependency(%q<bb-ruby>, [">= 0.9.3"])
       s.add_dependency(%q<BlueCloth>, [">= 1.0.0"])
       s.add_dependency(%q<RedCloth>, [">= 4.2.2"])
-      s.add_dependency(%q<rspec>, [">= 0"])
     end
   else
     s.add_dependency(%q<bb-ruby>, [">= 0.9.3"])
     s.add_dependency(%q<BlueCloth>, [">= 1.0.0"])
     s.add_dependency(%q<RedCloth>, [">= 4.2.2"])
-    s.add_dependency(%q<rspec>, [">= 0"])
   end
 end
