@@ -12,9 +12,9 @@ optparse = OptionParser.new do |opts|
     exit
   end
   
-  # If input aren't specified, then first arg will be used
+  # If input isn't specified, then first argument will be used
   options[:input] = ARGV.first
-  opts.on('-i', '--input FILE', 'Specify input file (if it aren\'t specified, then first argument will be used)') do |arg|
+  opts.on('-i', '--input FILE', 'Specify input file (if it isn\'t specified, then first argument will be used)') do |arg|
     options[:input] = arg
   end
 

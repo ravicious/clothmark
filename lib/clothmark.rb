@@ -12,7 +12,7 @@ class ClothMark
   def initialize(file, markup = "markdown", additional_html = false, output = nil)
     @file = file
 
-    # ClothMark will raise an error if unknown markup language has been sent
+    # ClothMark will raise an error if unknown markup language was sent
     if %w(markdown textile bbcode).include? markup
       @markup = markup
     else
@@ -63,8 +63,8 @@ class ClothMark
   end
 end
 
-  # Header for an output file.
-  HEADER = <<-EOF
+# Header for an output file.
+HEADER = <<-EOF
 <html>
   <head>
   <style type="text/css">
@@ -94,11 +94,11 @@ end
   </head>
   <body>
     <div id="wrapper">
-  EOF
+EOF
 
-  # Footer for an output file.
-  FOOTER = <<-EOF
+# Footer for an output file.
+FOOTER = <<-EOF
     </div>
   </body>
 </html>
-  EOF
+EOF
