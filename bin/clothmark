@@ -43,14 +43,9 @@ if ARGV.size < 1
 else
   begin
     optparse.parse!
-  rescue OptionParser::MissingArgument => e
+  rescue => e
       puts e
       puts "To see help, type:"
-      puts "$ #{File.basename(__FILE__)} -h"
-      exit
-  rescue OptionParser::InvalidArgument => e
-      puts e
-      puts "To see accepted arguments, type:"
       puts "$ #{File.basename(__FILE__)} -h"
       exit
   end #begin
